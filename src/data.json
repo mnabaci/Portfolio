@@ -1,0 +1,50 @@
+[
+  {
+    "logoUri": "tether",
+    "name": "USD Tether",
+    "code": "USDT",
+    "type": "stable_coin",
+    "color": "#26a69a",
+    "units": 20,
+    "flatValue": 23.12,
+    "percentage": 10,
+    "gainsValue": 4,
+    "gainsPercentage": 0
+  },
+  {
+    "logoUri": "pax-gold",
+    "name": "PAX Gold",
+    "code": "PAXG",
+    "type": "crypto",
+    "color": "#cca727",
+    "units": 20,
+    "flatValue": 23.12,
+    "percentage": 10,
+    "gainsValue": 4,
+    "gainsPercentage": 0
+  },
+  {
+    "logoUri": "rands",
+    "name": "Rands",
+    "code": "ZAR",
+    "type": "currency",
+    "color": "#007749",
+    "units": 20,
+    "flatValue": 23.12,
+    "percentage": 10,
+    "gainsValue": -4,
+    "gainsPercentage": 0
+  },
+  {
+    "logoUri": "ardr",
+    "name": "Ardor",
+    "code": "ARDR",
+    "type": "stable_coin",
+    "color": "#3c87c7",
+    "units": 20,
+    "flatValue": 23.12,
+    "percentage": 15,
+    "gainsValue": 10,
+    "gainsPercentage": 0
+  }
+]

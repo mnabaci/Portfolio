@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="800"
+   height="800"
+   viewBox="0 0 800 800"
+   sodipodi:docname="za-circle-01.ai"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath16">
+      <path
+         d="M 300,600 C 134.314,600 0,465.685 0,300 v 0 C 0,134.314 134.314,0 300,0 v 0 c 165.685,0 300,134.314 300,300 v 0 c 0,165.685 -134.315,300 -300,300 z"
+         id="path14" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     id="g8"
+     inkscape:groupmode="layer"
+     inkscape:label="za-circle-01"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,800)">
+    <g
+       id="g10">
+      <g
+         id="g12"
+         clip-path="url(#clipPath16)">
+        <g
+           id="g18"
+           transform="translate(30.2847)">
+          <path
+             d="M 0,0 H 719.715 V 200 H 300 Z"
+             style="fill:#001489;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path20" />
+        </g>
+        <g
+           id="g22"
+           transform="translate(750,400.0005)">
+          <path
+             d="M 0,0 V 200 H -719.729 L -419.73,0 Z"
+             style="fill:#e03c31;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path24" />
+        </g>
+        <g
+           id="g26"
+           transform="translate(119.7158,300)">
+          <path
+             d="M 0,0 -269.716,179.811 V -179.811 L 0.004,-0.003 Z"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path28" />
+        </g>
+        <g
+           id="g30"
+           transform="translate(318.1689,240)">
+          <path
+             d="m 0,0 -360.001,-240 h 72.117 l 300,200 H 431.831 V 0 Z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path32" />
+        </g>
+        <g
+           id="g34"
+           transform="translate(750,360.0005)">
+          <path
+             d="m 0,0 v 40 h -419.73 l -299.999,200 h -72.102 l 360,-240 z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path36" />
+        </g>
+        <g
+           id="g38"
+           transform="translate(-150,120.1895)">
+          <path
+             d="M 0,0 V 0 L 269.72,179.808 Z"
+             style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path40" />
+        </g>
+        <g
+           id="g42"
+           transform="translate(119.7158,300)">
+          <path
+             d="M 0,0 0.004,-0.003 Z"
+             style="fill:#ffb81c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path44" />
+        </g>
+        <g
+           id="g46"
+           transform="translate(119.7158,300)">
+          <path
+             d="m 0,0 -269.716,179.811 v 48.077 72.108 -10e-4 -120.184 z"
+             style="fill:#ffb81c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path48" />
+        </g>
+        <g
+           id="g50"
+           transform="translate(-150,527.8882)">
+          <path
+             d="m 0,0 v -48.078 l 269.716,-179.81 0.004,-0.003 L 0,-407.699 v -48.077 l 341.831,227.888 v 0 z"
+             style="fill:#ffb81c;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path52" />
+        </g>
+        <g
+           id="g54"
+           transform="translate(318.1689,360.0005)">
+          <path
+             d="m 0,0 -360,240 h -108.166 l -0.003,-0.005 V 167.888 L -126.338,-60 v 0 L -468.169,-287.888 V -360 h 10e-4 108.167 L 0,-120 H 431.831 V 0 Z"
+             style="fill:#007749;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path56" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
