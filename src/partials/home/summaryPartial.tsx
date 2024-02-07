@@ -5,7 +5,11 @@ import GradientButton from '../../components/GradientButton';
 import PieChart from '../../components/PieChart';
 import {SummaryPartialProps} from './types';
 
-const SummaryPartial = ({products}: SummaryPartialProps) => {
+const SummaryPartial = ({products = []}: SummaryPartialProps) => {
+  if (!products) {
+    return <Text>Loading...</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.leftActionsWrapper}>

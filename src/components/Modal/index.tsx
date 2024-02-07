@@ -10,7 +10,11 @@ const Modal = ({open, onClose, children}: ModalProps) => {
       animationType="slide"
       transparent>
       <View style={styles.container} onTouchEnd={onClose}>
-        <View style={styles.contentContainer}>{children}</View>
+        <View
+          style={styles.contentContainer}
+          onTouchEnd={e => e.stopPropagation()}>
+          {children}
+        </View>
       </View>
     </RNModal>
   );

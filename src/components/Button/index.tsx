@@ -10,6 +10,7 @@ const Button = ({
   children,
   icon,
   prepend,
+  color,
   onPress,
 }: ButtonProps) => {
   return (
@@ -20,8 +21,14 @@ const Button = ({
       {prepend}
       {(children || icon) && (
         <View style={styles.content}>
-          {icon && <Icon name={icon} width={20} height={20} color="white" />}
-          {children && <Text style={styles.text}>{children}</Text>}
+          {icon && (
+            <Icon name={icon} width={20} height={20} color={color ?? 'white'} />
+          )}
+          {children && (
+            <Text style={{...styles.text, color: color ?? styles.text.color}}>
+              {children}
+            </Text>
+          )}
         </View>
       )}
     </TouchableOpacity>
@@ -34,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 4,

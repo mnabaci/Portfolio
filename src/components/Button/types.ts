@@ -9,5 +9,6 @@ export type ButtonProps = {
   prepend?: React.ReactNode;
   icon?: IconName;
   style?: ViewStyle;
+  color?: string;
   onPress?: () => void;
 };

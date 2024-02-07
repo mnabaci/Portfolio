@@ -1,5 +1,5 @@
 import SummaryPartial from './summaryPartial';
 import AssetsListPartial from './assetsListPartial';
-import FilterModal from './filterModal';
+import FilterModalPartial from './filterModalPartial';
 
-export {SummaryPartial, AssetsListPartial, FilterModal};
+export {SummaryPartial, AssetsListPartial, FilterModalPartial};

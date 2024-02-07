@@ -1,13 +1,30 @@
 import {ModalProps} from '../../components/Modal/types';
-import {Product} from '../../types';
+import {DisplayOrder, Nullable, Product, TimeFrame} from '../../types';
 
 export type AssetsListPartialProps = {
   header?: React.ReactNode;
-  products: Product[];
+  products: Nullable<Product[]>;
+  loading: boolean;
+  reload: () => Promise<void>;
 };
 
 export type SummaryPartialProps = {
-  products: Product[];
+  products: Nullable<Product[]>;
 };
 
-export type FilterModalProps = Pick<ModalProps, 'open' | 'onClose'>;
+export type FilterModalProps = {
+  displayOrder: DisplayOrder;
+  onDisplayOrderChange: (displayOrder: DisplayOrder) => void;
+  timeFrame: TimeFrame;
+  onTimeFrameChange: (timeFrame: TimeFrame) => void;
+} & Pick<ModalProps, 'open' | 'onClose'>;
+
+export type FilterItemProps = {
+  label: string;
+  value?: string;
+  itemWidth?: number;
+  items: FilterItem[];
+  onChange: (selected: FilterItem) => void;
+};
+
+export type FilterItem = {label: string; value: string};

@@ -3,8 +3,13 @@ import {StyleSheet, Text, View} from 'react-native';
 import {ProductListItemProps} from './types';
 import Icon from '../Icon';
 
-const ProductListItem = ({product}: ProductListItemProps) => {
-  const isGain = useMemo(() => product.gainsValue >= 0, [product]);
+const ProductListItem = ({product, timeFrame}: ProductListItemProps) => {
+  const gains = useMemo(
+    () => product.gains.find(g => g.timeFrame === timeFrame),
+    [product, timeFrame],
+  );
+  const isGain = useMemo(() => !gains || gains.value >= 0, [gains]);
+
   const gainsColor = useMemo(
     () => (isGain ? styles.success : styles.error),
     [isGain],
@@ -25,12 +30,12 @@ const ProductListItem = ({product}: ProductListItemProps) => {
         <View style={styles.summaryContainer}>
           <Text style={styles.flatValue}>${product.flatValue}</Text>
           <View style={styles.gainsContainer}>
-            {product.gainsValue === 0 ? (
+            {!gains?.value ? (
               <Text style={{color: gainsColor.color}}>-</Text>
             ) : (
               <>
                 <Text style={{...styles.gainsValue, color: gainsColor.color}}>
-                  ${product.gainsValue}
+                  ${gains.value}
                 </Text>
                 <View
                   style={{
@@ -49,7 +54,7 @@ const ProductListItem = ({product}: ProductListItemProps) => {
                       ...styles.gainsPercentage,
                       color: gainsColor.color,
                     }}>
-                    {product.gainsPercentage}%
+                    {gains.percentage}%
                   </Text>
                 </View>
               </>

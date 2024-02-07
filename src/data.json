@@ -8,8 +8,7 @@
     "units": 20,
     "flatValue": 23.12,
     "percentage": 10,
-    "gainsValue": 4,
-    "gainsPercentage": 0
+    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
   },
   {
     "logoUri": "pax-gold",
@@ -20,8 +19,7 @@
     "units": 20,
     "flatValue": 23.12,
     "percentage": 10,
-    "gainsValue": 4,
-    "gainsPercentage": 0
+    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
   },
   {
     "logoUri": "rands",
@@ -32,8 +30,7 @@
     "units": 20,
     "flatValue": 23.12,
     "percentage": 10,
-    "gainsValue": -4,
-    "gainsPercentage": 0
+    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
   },
   {
     "logoUri": "ardr",
@@ -44,7 +41,6 @@
     "units": 20,
     "flatValue": 23.12,
     "percentage": 15,
-    "gainsValue": 10,
-    "gainsPercentage": 0
+    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
   }
 ]

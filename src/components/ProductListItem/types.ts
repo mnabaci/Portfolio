@@ -1,3 +1,3 @@
-import {Product} from '../../types';
+import {Product, TimeFrame} from '../../types';
 
-export type ProductListItemProps = {product: Product};
+export type ProductListItemProps = {product: Product; timeFrame: TimeFrame};

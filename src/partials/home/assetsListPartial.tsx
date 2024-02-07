@@ -8,30 +8,39 @@ import {
   View,
 } from 'react-native';
 import Button from '../../components/Button';
-import {Product} from '../../types';
+import {DisplayOrder, Product, TimeFrame} from '../../types';
 import ProductListItem from '../../components/ProductListItem';
 import {AssetsListPartialProps} from './types';
-import {FilterModal} from '.';
+import {FilterModalPartial} from '.';
+import {LoadingPartial} from '../common';
 
-const renderItem = (product: ListRenderItemInfo<Product>) => (
-  <ProductListItem product={product.item} />
-);
-
-const wait = (timeout: number) => {
-  // Defined the timeout function for testing purpose
-  return new Promise(resolve => setTimeout(resolve, timeout));
-};
-
-const AssetsListPartial = ({header, products}: AssetsListPartialProps) => {
-  const [isRefreshing, setIsRefreshing] = useState(false);
+const AssetsListPartial = ({
+  header,
+  products,
+  loading,
+  reload,
+}: AssetsListPartialProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [timeFrame, setTimeFrame] = useState<TimeFrame>('1d');
+  const [displayOrder, setDisplayOrder] = useState<DisplayOrder>('asc');
 
   const onModalClose = useCallback(() => setIsOpen(false), []);
 
-  const onRefresh = useCallback(() => {
-    setIsRefreshing(true);
-    wait(2000).then(() => setIsRefreshing(false));
-  }, []);
+  const renderItem = useCallback(
+    (product: ListRenderItemInfo<Product>) => (
+      <ProductListItem product={product.item} timeFrame={timeFrame} />
+    ),
+    [timeFrame],
+  );
+
+  if (loading) {
+    return <LoadingPartial />;
+  }
+
+  // Error handling
+  if (!products) {
+    return <Text>An unexpected error occurred.</Text>;
+  }
 
   return (
     <FlatList
@@ -39,8 +48,8 @@ const AssetsListPartial = ({header, products}: AssetsListPartialProps) => {
         <RefreshControl
           colors={['white', 'white']}
           tintColor="white"
-          refreshing={isRefreshing}
-          onRefresh={onRefresh}
+          refreshing={loading}
+          onRefresh={reload}
         />
       }
       style={styles.list}
@@ -48,7 +57,14 @@ const AssetsListPartial = ({header, products}: AssetsListPartialProps) => {
       ListHeaderComponent={
         <>
           {header}
-          <FilterModal open={isOpen} onClose={onModalClose} />
+          <FilterModalPartial
+            open={isOpen}
+            onClose={onModalClose}
+            timeFrame={timeFrame}
+            onTimeFrameChange={setTimeFrame}
+            displayOrder={displayOrder}
+            onDisplayOrderChange={setDisplayOrder}
+          />
           <View style={styles.container}>
             <View style={styles.actionsContainer}>
               <Text style={styles.actionsTitle}>Your holdings</Text>
