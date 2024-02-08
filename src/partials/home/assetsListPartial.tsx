@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   FlatList,
   ListRenderItemInfo,
@@ -8,11 +8,13 @@ import {
   View,
 } from 'react-native';
 import Button from '../../components/Button';
-import {DisplayOrder, Product, TimeFrame} from '../../types';
+import {DisplayOrder, Product, ProductSortType, TimeFrame} from '../../types';
 import ProductListItem from '../../components/ProductListItem';
 import {AssetsListPartialProps} from './types';
 import {FilterModalPartial} from '.';
 import {LoadingPartial} from '../common';
+import {useFilterProducts} from '../../reducers/productsReducer';
+import {getTimeFrameName} from '../../utils/copy';
 
 const AssetsListPartial = ({
   header,
@@ -21,8 +23,12 @@ const AssetsListPartial = ({
   reload,
 }: AssetsListPartialProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const filterProducts = useFilterProducts();
   const [timeFrame, setTimeFrame] = useState<TimeFrame>('1d');
   const [displayOrder, setDisplayOrder] = useState<DisplayOrder>('asc');
+  const [productSortType, setProductSortType] = useState<
+    ProductSortType | undefined
+  >();
 
   const onModalClose = useCallback(() => setIsOpen(false), []);
 
@@ -33,13 +39,12 @@ const AssetsListPartial = ({
     [timeFrame],
   );
 
-  if (loading) {
-    return <LoadingPartial />;
-  }
+  useEffect(() => {
+    filterProducts(displayOrder, productSortType);
+  }, [filterProducts, displayOrder, productSortType]);
 
-  // Error handling
-  if (!products) {
-    return <Text>An unexpected error occurred.</Text>;
+  if (loading === 'idle' || (loading === 'pending' && !products?.length)) {
+    return <LoadingPartial />;
   }
 
   return (
@@ -48,7 +53,7 @@ const AssetsListPartial = ({
         <RefreshControl
           colors={['white', 'white']}
           tintColor="white"
-          refreshing={loading}
+          refreshing={loading === 'pending'}
           onRefresh={reload}
         />
       }
@@ -64,12 +69,16 @@ const AssetsListPartial = ({
             onTimeFrameChange={setTimeFrame}
             displayOrder={displayOrder}
             onDisplayOrderChange={setDisplayOrder}
+            productSortType={productSortType}
+            onProductSortTypeChange={setProductSortType}
           />
           <View style={styles.container}>
             <View style={styles.actionsContainer}>
               <Text style={styles.actionsTitle}>Your holdings</Text>
               <View style={styles.filterContainer}>
-                <Text style={styles.filterText}>1D</Text>
+                <Text style={styles.filterText}>
+                  {getTimeFrameName(timeFrame)}
+                </Text>
                 <Button
                   icon="filter"
                   style={styles.filterButton}

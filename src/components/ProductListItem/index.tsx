@@ -2,6 +2,7 @@ import React, {useMemo} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ProductListItemProps} from './types';
 import Icon from '../Icon';
+import {convertToMoney} from '../../utils/money';
 
 const ProductListItem = ({product, timeFrame}: ProductListItemProps) => {
   const gains = useMemo(
@@ -28,14 +29,18 @@ const ProductListItem = ({product, timeFrame}: ProductListItemProps) => {
           </View>
         </View>
         <View style={styles.summaryContainer}>
-          <Text style={styles.flatValue}>${product.flatValue}</Text>
+          <Text style={styles.flatValue}>
+            {convertToMoney(product.flatValue)}
+          </Text>
           <View style={styles.gainsContainer}>
             {!gains?.value ? (
-              <Text style={{color: gainsColor.color}}>-</Text>
+              <Text style={{color: gainsColor.color, ...styles.noGains}}>
+                -
+              </Text>
             ) : (
               <>
                 <Text style={{...styles.gainsValue, color: gainsColor.color}}>
-                  ${gains.value}
+                  {convertToMoney(gains.value)}
                 </Text>
                 <View
                   style={{
@@ -117,6 +122,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#272c44',
     marginLeft: 70,
     marginRight: 10,
+  },
+  noGains: {
+    paddingVertical: 5,
   },
 });
 export default ProductListItem;

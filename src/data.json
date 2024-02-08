@@ -6,9 +6,9 @@
     "type": "stable_coin",
     "color": "#26a69a",
     "units": 20,
-    "flatValue": 23.12,
-    "percentage": 10,
-    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
+    "flatValue": 25.10,
+    "percentage": 25,
+    "gains": [{"value": 5, "percentage": 10, "timeFrame": "1d"}]
   },
   {
     "logoUri": "pax-gold",
@@ -16,10 +16,10 @@
     "code": "PAXG",
     "type": "crypto",
     "color": "#cca727",
-    "units": 20,
-    "flatValue": 23.12,
-    "percentage": 10,
-    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
+    "units": 42,
+    "flatValue": 13.02,
+    "percentage": 20,
+    "gains": [{"value": 13, "percentage": 6, "timeFrame": "1d"}]
   },
   {
     "logoUri": "rands",
@@ -27,10 +27,10 @@
     "code": "ZAR",
     "type": "currency",
     "color": "#007749",
-    "units": 20,
-    "flatValue": 23.12,
+    "units": 157,
+    "flatValue": 5.24,
     "percentage": 10,
-    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
+    "gains": [{"value": 1.2, "percentage": 2, "timeFrame": "1d"}]
   },
   {
     "logoUri": "ardr",
@@ -38,9 +38,9 @@
     "code": "ARDR",
     "type": "stable_coin",
     "color": "#3c87c7",
-    "units": 20,
-    "flatValue": 23.12,
-    "percentage": 15,
-    "gains": [{"value": 3, "percentage": 2, "timeFrame": "1d"}]
+    "units": 4,
+    "flatValue": 53.12,
+    "percentage": 45,
+    "gains": [{"value": 15.9, "percentage": 23, "timeFrame": "1d"}]
   }
 ]

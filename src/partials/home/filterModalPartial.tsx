@@ -3,7 +3,12 @@ import {StyleSheet, Text, View} from 'react-native';
 import Modal from '../../components/Modal';
 import {FilterItemProps, FilterModalProps} from './types';
 import Button from '../../components/Button';
-import {DisplayOrder, TimeFrame} from '../../types';
+import {DisplayOrder, ProductSortType, TimeFrame} from '../../types';
+import {
+  getDisplayOrderName,
+  getProductSortTypeName,
+  getTimeFrameName,
+} from '../../utils/copy';
 
 const FilterModalPartial = ({
   onClose,
@@ -12,6 +17,8 @@ const FilterModalPartial = ({
   onDisplayOrderChange,
   timeFrame,
   onTimeFrameChange,
+  productSortType,
+  onProductSortTypeChange,
 }: FilterModalProps) => {
   return (
     <Modal open={open} onClose={onClose}>
@@ -20,34 +27,50 @@ const FilterModalPartial = ({
           label="Time interval"
           value={timeFrame}
           itemWidth={50}
-          onChange={i => onTimeFrameChange(i.value as TimeFrame)}
+          onChange={i => onTimeFrameChange(i?.value as TimeFrame)}
           items={[
-            {label: '1D', value: '1d' as TimeFrame},
-            {label: '1M', value: '1m' as TimeFrame},
-            {label: '3M', value: '3m' as TimeFrame},
-            {label: '6M', value: '6m' as TimeFrame},
-            {label: '1Y', value: '1y' as TimeFrame},
+            {label: getTimeFrameName('1d'), value: '1d' as TimeFrame},
+            {label: getTimeFrameName('1m'), value: '1m' as TimeFrame},
+            {label: getTimeFrameName('3m'), value: '3m' as TimeFrame},
+            {label: getTimeFrameName('6m'), value: '6m' as TimeFrame},
+            {label: getTimeFrameName('1y'), value: '1y' as TimeFrame},
           ]}
         />
         <FilterItem
           label="View"
           itemWidth={70}
-          onChange={() => {}}
+          value={productSortType}
+          onChange={s =>
+            onProductSortTypeChange(s?.value as ProductSortType | undefined)
+          }
           items={[
-            {label: 'Returns', value: 'returns'},
-            {label: 'Units', value: 'units'},
-            {label: 'Value', value: 'value'},
-            {label: 'Weight', value: 'weight'},
+            {
+              label: getProductSortTypeName('returns'),
+              value: 'returns' as ProductSortType,
+            },
+            {
+              label: getProductSortTypeName('units'),
+              value: 'units' as ProductSortType,
+            },
+            {
+              label: getProductSortTypeName('value'),
+              value: 'value' as ProductSortType,
+            },
+            {
+              label: getProductSortTypeName('weight'),
+              value: 'weight' as ProductSortType,
+            },
           ]}
+          allowDeselect
         />
         <FilterItem
           label="Order"
           itemWidth={90}
-          onChange={i => onDisplayOrderChange(i.value as DisplayOrder)}
+          onChange={i => onDisplayOrderChange(i?.value as DisplayOrder)}
           value={displayOrder}
           items={[
-            {label: 'Ascending', value: 'asc' as DisplayOrder},
-            {label: 'Descending', value: 'desc' as DisplayOrder},
+            {label: getDisplayOrderName('asc'), value: 'asc' as DisplayOrder},
+            {label: getDisplayOrderName('desc'), value: 'desc' as DisplayOrder},
           ]}
         />
       </View>
@@ -60,6 +83,7 @@ const FilterItem = ({
   items,
   value,
   itemWidth,
+  allowDeselect,
   onChange,
 }: FilterItemProps) => {
   return (
@@ -68,7 +92,9 @@ const FilterItem = ({
       <View style={styles.filterItemList}>
         {items.map(i => (
           <Button
-            onPress={() => onChange(i)}
+            onPress={() =>
+              i.value === value && allowDeselect ? onChange() : onChange(i)
+            }
             style={{
               ...styles.filterItemAction,
               ...(i.value === value ? styles.selectedItem : {}),

@@ -4,6 +4,7 @@ import Button from '../../components/Button';
 import GradientButton from '../../components/GradientButton';
 import PieChart from '../../components/PieChart';
 import {SummaryPartialProps} from './types';
+import {convertToMoney} from '../../utils/money';
 
 const SummaryPartial = ({products = []}: SummaryPartialProps) => {
   if (!products) {
@@ -25,15 +26,20 @@ const SummaryPartial = ({products = []}: SummaryPartialProps) => {
       <PieChart
         barWidth={5}
         style={styles.chart}
-        portions={products.map(p => ({amount: p.flatValue, color: p.color}))}
+        portions={
+          products.length === 0
+            ? [{amount: 0, color: 'blue'}]
+            : products.map(p => ({amount: p.flatValue, color: p.color}))
+        }
         label={
           <View style={styles.chartLabel}>
             <Text style={styles.chartLabelTitle}>Portfolio value</Text>
             <Text style={styles.chartLabelValue}>
-              $
-              {products.length === 0
-                ? 0
-                : products.map(p => p.flatValue).reduce((v1, v2) => v1 + v2)}
+              {convertToMoney(
+                products.length === 0
+                  ? 0
+                  : products.map(p => p.flatValue).reduce((v1, v2) => v1 + v2),
+              )}
             </Text>
           </View>
         }

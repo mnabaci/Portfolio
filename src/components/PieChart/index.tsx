@@ -4,6 +4,7 @@ import Svg, {G, Circle} from 'react-native-svg';
 import {PieChartPortionProps, PieChartProps} from './types';
 
 const radius = 80;
+const circleCircumference = 2 * Math.PI * radius;
 
 const PieChart = ({
   portions,
@@ -19,6 +20,10 @@ const PieChart = ({
     [portions],
   );
 
+  const sortedPortions = useMemo(
+    () => portions.sort((p1, p2) => p1.color.localeCompare(p2.color)),
+    [portions],
+  );
   const onLayout = (event: LayoutChangeEvent) => {
     const {width: pWidth} = event.nativeEvent.layout;
     setParentWidth(pWidth);
@@ -42,7 +47,7 @@ const PieChart = ({
               />
             ) : (
               <>
-                {portions.map((p, i) => (
+                {sortedPortions.map((p, i) => (
                   <Portion
                     barWidth={barWidth}
                     total={total}
@@ -81,11 +86,10 @@ const Portion = ({
   prevTotal,
 }: PieChartPortionProps) => {
   const percentage = useMemo(() => (amount / total) * 100, [amount, total]);
-  const circleCircumference = 2 * Math.PI * radius;
 
   const strokeDashoffset = useMemo(
     () => circleCircumference - (circleCircumference * percentage) / 100,
-    [circleCircumference, percentage],
+    [percentage],
   );
 
   const angle = useMemo(() => (prevTotal / total) * 360, [prevTotal, total]);

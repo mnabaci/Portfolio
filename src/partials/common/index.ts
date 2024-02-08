@@ -1,3 +1,4 @@
 import LoadingPartial from './loadingPartial';
+import Layout from './layoutPartial';
 
-export {LoadingPartial};
+export {LoadingPartial, Layout};

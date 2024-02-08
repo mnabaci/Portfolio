@@ -25,3 +25,7 @@ export type DisplayOrder = 'asc' | 'desc';
 export type ProductName = 'tether' | 'pax-gold' | 'rands' | 'ardr';
 
 export type Nullable<T> = T | null;
+
+export type LoadingState = 'idle' | 'pending' | 'succeeded' | 'failed';
+
+export type ProductSortType = 'returns' | 'units' | 'value' | 'weight';
